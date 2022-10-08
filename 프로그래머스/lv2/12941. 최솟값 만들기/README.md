@@ -2,6 +2,26 @@
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12941) 
 
+
+## issue
+```
+function solution(A,B){
+    var answer = 0;
+    
+    const sortA = A.sort();
+    const sortB = B.sort((a,b) => b-a)
+    
+    for(const idx in sortA) {
+        answer += sortA[idx] * sortB[idx]
+    }
+
+    return answer;
+}
+```
+위와 같은 코드일때 실패가 떠서 왜인지 확인을해보니, 
+A를 sort할떄 콜백함수를 넣지 않아셔이였다. 
+sort()는 기본적으로 유니코드 기준 정렬이기 때문에 두자리 수 이상이면 정렬이 제대로 되지 않는다.  
+
 ### 성능 요약
 
 메모리: 33.4 MB, 시간: 0.78 ms
