@@ -1,9 +1,10 @@
 import sys
 
 def fibo(x):
+    global dp
     # 탑다운
     # 종료 조건
-    if x==1 or x==2:
+    if x == 1 or x == 2:
         return 1
 
     if dp[x] !=0:
@@ -13,6 +14,7 @@ def fibo(x):
     return dp[x]
 
 def fibo_bottom(n):
+    # 바텀업
     dp = [0] * 100
 
     dp[1] = 1
@@ -28,7 +30,7 @@ if __name__ == "__main__":
 
     n = int(sys.stdin.readline().rstrip())
 
-    dp = [0] * 90
+    dp = [0] * 100
 
-    print(fibo_bottom(n))
+    print(fibo(n))
 
