@@ -16,20 +16,16 @@ def is_range(x, y, n, m):
 
 def main(n, m, arr):
     def bfs(start_node):
-        visit = set()
         queue = deque()
         queue.append(start_node)
         while queue:
             node = queue.popleft()
-
-            if node not in visit:
-                visit.add(node)
-                for i in range(4):
-                    nx = node[0] + dx[i]
-                    ny = node[1] + dy[i]
-                    if is_range(nx, ny, n, m) and arr[nx][ny] == 1:
-                        queue.append((nx, ny))
-                        arr[nx][ny] = arr[node[0]][node[1]] + 1
+            for i in range(4):
+                nx = node[0] + dx[i]
+                ny = node[1] + dy[i]
+                if is_range(nx, ny, n, m) and arr[nx][ny] == 1:
+                    queue.append((nx, ny))
+                    arr[nx][ny] = arr[node[0]][node[1]] + 1
         return arr[n - 1][m - 1]
 
     return bfs((0, 0))
